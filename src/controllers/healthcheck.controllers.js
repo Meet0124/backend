@@ -1,0 +1,22 @@
+import {ApiResponse} from "../utils/ApiResponse.js"
+import {asyncHandler} from "../utils/asyncHandler.js"
+
+// const healthcheck = async(req,res) => {
+//     try{
+//         res.status(200).json
+//     }catch(error)
+// }   ONE WAY OF DOING THINGS
+
+const healthcheck = asyncHandler(async(req, res) => {
+    return res
+    .status(200)
+    .json(new ApiResponse(200, "Ok", "Health check passed"))
+
+})
+
+export {healthcheck}
+
+// now create route handler. each controller has it's own route
+
+// this asynchandler is for handling the database connection directly up here.
+// each controller get it's own route handler

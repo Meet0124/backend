@@ -1,4 +1,5 @@
 import express from "express";
+import cookieParser from "cookie-parser"
 
 import cors from "cors";
 // npm -i cors - mentionin who can talk to the application
@@ -20,6 +21,8 @@ app.use(express.static("public"));
 
 //lec 104. dividing everything into different folders.
 //healthcheck logic api. go to controllers and healthcheck
+
+
 
 //import routes
 import healthcheckRouter from "./routes/healthcheck.routes.js"

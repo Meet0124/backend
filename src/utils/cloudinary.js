@@ -1,8 +1,8 @@
 import { v2 as cloudinary } from "cloudinary";
 import fs from "fs" //file storage method
-import dotenv from "dotnev"
 
-dotenv.config()
+
+//dotenv.config()
 // configure cloudinary
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,

@@ -64,7 +64,7 @@ const userSchema = new Schema({
 
 //just before saving password we need to encrypt them
 userSchema.pre("save", async function (next){
-  if(!this.modified("password")) return next()
+  if(!this.isModified("password")) return next()
 
   this.password= bcrypt.hash(this.password, 10) // it will run every single time even for username which we don't want so we use if statement
   // password should only be updated at time of save or at time of updating password

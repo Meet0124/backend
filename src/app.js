@@ -26,8 +26,11 @@ app.use(express.static("public"));
 
 //import routes
 import healthcheckRouter from "./routes/healthcheck.routes.js"
-
+import userRouter from "./routes/user.routes.js"
+import { errorHandler } from "./middlewares/error.middlewares.js";
 //routes 
 app.use("/api/v1/healthcheck", healthcheckRouter) // once you reach healthcheck the whole control will go to route foder
+app.use("/api/v1/users", userRouter) // once you reach healthcheck the whole control will go to route foder
 
+app.use(errorHandler)
 export { app }; // export this express app so that we can use somewhere else

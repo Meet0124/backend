@@ -366,13 +366,14 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
 });
 
 const getUserChannelProfile = asyncHandler(async (req, res) => {
-  const { username } = req.params;
+  const { username } = req.params; //paramse get you anything from url that user is using
 
   if (!username?.trim()) {
     throw new ApiError(400, "username is missing");
   }
-
+///use this username to enquire something from database
   const channel = await User.aggregate([
+    //this array has multiple objects where we put filtered information
     {
       $match: {
         username: username?.toLowerCase(),
@@ -393,11 +394,11 @@ const getUserChannelProfile = asyncHandler(async (req, res) => {
         foreignField: "subscriber",
         as: "subscribedTo",
       },
-    },
+    }, //how you want to present information
     {
       $addFields: {
         subscribersCount: {
-          $size: "$subscribers",
+          $size: "$subscribers", // dollar sign required when you have named something
         },
         channelsSubscribedToCount: {
           $size: "$subscribedTo",
@@ -411,7 +412,7 @@ const getUserChannelProfile = asyncHandler(async (req, res) => {
         },
       },
     },
-    {
+    { //Project only neccessary data
       $project: {
         fullname: 1,
         username: 1,

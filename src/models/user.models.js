@@ -40,7 +40,7 @@ const userSchema = new Schema({
   },
   avatar: {
     type: String, //cloudinary url
-    required: true,
+    required: true, // edited by vedant
   },
   coverImage: {
     type: String, // cloudinary url
